@@ -50,55 +50,55 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg">
-      <h2 className="text-2xl font-semibold text-gray-700 mb-4">Add Product</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
+      <h2 className="text-2xl font-semibold text-gray-800 mb-6">Add Product</h2>
+      <form onSubmit={handleSubmit} className="space-y-6">
         {/* Product Name */}
         <div>
-          <label className="block text-gray-600">Product Name</label>
+          <label className="block text-gray-700">Product Name</label>
           <input
             type="text"
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded mt-1"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
             required
           />
         </div>
 
         {/* Description */}
         <div>
-          <label className="block text-gray-600">Description</label>
+          <label className="block text-gray-700">Description</label>
           <textarea
             name="description"
             value={formData.description}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded mt-1"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
             rows="3"
           ></textarea>
         </div>
 
         {/* Price & Quantity */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-6">
           <div>
-            <label className="block text-gray-600">Price</label>
+            <label className="block text-gray-700">Price</label>
             <input
               type="number"
               name="price"
               value={formData.price}
               onChange={handleChange}
-              className="w-full p-2 border border-gray-300 rounded mt-1"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               required
             />
           </div>
           <div>
-            <label className="block text-gray-600">Quantity</label>
+            <label className="block text-gray-700">Quantity</label>
             <input
               type="number"
               name="quantity"
               value={formData.quantity}
               onChange={handleChange}
-              className="w-full p-2 border border-gray-300 rounded mt-1"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
               required
             />
           </div>
@@ -106,12 +106,12 @@ const AddProduct = () => {
 
         {/* Status */}
         <div>
-          <label className="block text-gray-600">Status</label>
+          <label className="block text-gray-700">Status</label>
           <select
             name="status"
             value={formData.status}
             onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded mt-1"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
             required
           >
             <option value="">Select Status</option>
@@ -123,16 +123,16 @@ const AddProduct = () => {
 
         {/* Image Upload */}
         <div>
-          <label className="block text-gray-600">Product Image</label>
+          <label className="block text-gray-700">Product Image</label>
           <input
             type="file"
             accept="image/*"
             onChange={handleImageUpload}
-            className="w-full p-2 border border-gray-300 rounded mt-1"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
           {/* Image Preview */}
           {formData.image && (
-            <div className="mt-3">
+            <div className="mt-4">
               <img
                 src={URL.createObjectURL(formData.image)}
                 alt="Product Preview"
@@ -145,7 +145,7 @@ const AddProduct = () => {
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition duration-200"
+          className="w-full bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
           Add Product
         </button>
