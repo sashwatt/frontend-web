@@ -79,7 +79,7 @@ const AllGadgets = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.6 }}
       >
-        <h2 className="text-3xl font-semibold mb-6 text-center">🔥 Featured Gadgets</h2>
+        <h2 className="text-3xl font-semibold mb-6 text-center"> Featured Gadgets</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProducts.map((product) => (
             <motion.div 
