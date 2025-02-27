@@ -104,6 +104,12 @@ const PublicDashboard = () => {
         </div>
       </section>
 
+      {/* Footer */}
+      <footer className="py-16 px-6 md:px-20 text-center bg-gradient-to-r from-purple-800 to-indigo-700 text-white">
+        <h2 className="text-4xl font-extrabold mb-4">Your Trusted Gadget Rental Platform</h2>
+        <p className="text-lg opacity-80">Experience a seamless and affordable way to rent high-end gadgets.</p>
+      </footer>
+
       {/* Floating CTA Button */}
       <button
         className="fixed bottom-10 right-10 bg-purple-600 text-white p-4 rounded-full shadow-lg hover:bg-purple-700 transition transform hover:scale-110"
