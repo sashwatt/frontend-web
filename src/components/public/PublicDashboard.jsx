@@ -124,9 +124,9 @@
 
 // export default PublicDashboard;
 
-
+import { motion } from "framer-motion";
 import React, { useState } from "react";
-import { FaClock, FaFacebookF, FaInstagram, FaLinkedinIn, FaPiggyBank, FaShieldAlt, FaTwitter } from "react-icons/fa";
+import { FaClock, FaPiggyBank, FaShieldAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Typewriter from "typewriter-effect";
 import PublicNavbar from "../common/customer/PublicNavbar";
@@ -153,18 +153,35 @@ const PublicDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-800">
+    <motion.div 
+      className="min-h-screen bg-gray-50 text-gray-800"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.5 }}
+    >
       <PublicNavbar />
 
       {/* Notification */}
       {notification && (
-        <div className="fixed top-5 right-5 bg-green-500 text-white px-4 py-2 rounded-lg shadow-md z-50 text-sm animate-slide-in">
+        <motion.div
+          className="fixed top-5 right-5 bg-green-500 text-white px-4 py-2 rounded-lg shadow-md z-50 text-sm"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.3 }}
+        >
           {notification}
-        </div>
+        </motion.div>
       )}
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-purple-700 to-indigo-700 text-white py-16 px-4 text-center animate-fade-in">
+      <motion.section
+        className="bg-gradient-to-r from-purple-700 to-indigo-700 text-white py-16 px-4 text-center"
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      >
         <h1 className="text-4xl font-bold">
           <Typewriter
             options={{
@@ -177,92 +194,87 @@ const PublicDashboard = () => {
         <p className="mt-2 text-sm opacity-90 max-w-md mx-auto">
           Get access to the latest gadgets at an affordable price with BorrowBox.
         </p>
-        <button
+        <motion.button
           className="mt-4 bg-orange-500 text-white py-2 px-6 rounded-md text-sm hover:bg-orange-600 transition transform hover:scale-105"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
           onClick={() => navigate("/all-gadgets")}
         >
           Explore Gadgets
-        </button>
-      </section>
+        </motion.button>
+      </motion.section>
 
       {/* Features Section */}
-      <section className="py-12 px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-        <div className="p-4 bg-white shadow-md rounded-md transform transition duration-300 hover:scale-105">
-          <FaClock size={40} className="mx-auto text-purple-600" />
-          <h3 className="mt-2 text-lg font-semibold">24/7 Availability</h3>
-          <p className="text-xs text-gray-500">Rent anytime, anywhere.</p>
-        </div>
-        <div className="p-4 bg-white shadow-md rounded-md transform transition duration-300 hover:scale-105">
-          <FaShieldAlt size={40} className="mx-auto text-purple-600" />
-          <h3 className="mt-2 text-lg font-semibold">100% Secure</h3>
-          <p className="text-xs text-gray-500">Your transactions are protected.</p>
-        </div>
-        <div className="p-4 bg-white shadow-md rounded-md transform transition duration-300 hover:scale-105">
-          <FaPiggyBank size={40} className="mx-auto text-purple-600" />
-          <h3 className="mt-2 text-lg font-semibold">Affordable Pricing</h3>
-          <p className="text-xs text-gray-500">Rent premium gadgets affordably.</p>
-        </div>
-      </section>
+      <motion.section 
+        className="py-12 px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+      >
+        {[
+          { icon: <FaClock size={40} className="mx-auto text-purple-600" />, title: "24/7 Availability", desc: "Rent anytime, anywhere." },
+          { icon: <FaShieldAlt size={40} className="mx-auto text-purple-600" />, title: "100% Secure", desc: "Your transactions are protected." },
+          { icon: <FaPiggyBank size={40} className="mx-auto text-purple-600" />, title: "Affordable Pricing", desc: "Rent premium gadgets affordably." },
+        ].map((feature, index) => (
+          <motion.div 
+            key={index}
+            className="p-4 bg-white shadow-md rounded-md transform transition duration-300 hover:scale-105"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 + index * 0.2 }}
+          >
+            {feature.icon}
+            <h3 className="mt-2 text-lg font-semibold">{feature.title}</h3>
+            <p className="text-xs text-gray-500">{feature.desc}</p>
+          </motion.div>
+        ))}
+      </motion.section>
 
       {/* Product Grid Section */}
-      <section className="py-12 px-4">
-        <h2 className="text-3xl font-semibold mb-6 text-center animate-fade-in">🔥 Hot Deals from BorrowBox</h2>
+      <motion.section
+        className="py-12 px-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.6 }}
+      >
+        <h2 className="text-3xl font-semibold mb-6 text-center">🔥 Hot Deals from BorrowBox</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {products.map((product) => (
-            <div key={product.id} className="bg-white p-4 rounded-md shadow-md text-center transform transition duration-300 hover:scale-105">
-              <img src={product.image} alt={product.name} className="w-32 h-32 object-cover mx-auto mb-3 animate-fade-in" />
+          {products.map((product, index) => (
+            <motion.div
+              key={product.id}
+              className="bg-white p-4 rounded-md shadow-md text-center transform transition duration-300 hover:scale-105"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
+            >
+              <img src={product.image} alt={product.name} className="w-32 h-32 object-cover mx-auto mb-3" />
               <h3 className="text-lg font-semibold">{product.name}</h3>
               <p className="text-sm text-purple-600 font-medium">NPR {product.price}/day</p>
-              <div className="mt-3 flex flex-col space-y-2">
-                <button
-                  className="bg-orange-500 text-white py-2 px-4 rounded-md text-sm hover:bg-orange-600 transition transform hover:scale-105"
-                  onClick={() => handleAddToCart(product)}
-                >
-                  Add to Cart
-                </button>
-                <button className="bg-gray-200 text-gray-700 py-1 px-3 rounded-md text-xs hover:bg-gray-300 transition">
-                  View Details
-                </button>
-              </div>
-            </div>
+              <motion.button
+                className="mt-4 bg-orange-500 text-white py-2 px-6 rounded-md text-sm hover:bg-orange-600 transition"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => handleAddToCart(product)}
+              >
+                Add to Cart
+              </motion.button>
+            </motion.div>
           ))}
         </div>
-      </section>
+      </motion.section>
 
-      {/* Clean & Aesthetic Footer */}
-      <footer className="py-10 px-4 bg-gradient-to-r from-indigo-900 to-purple-900 text-white text-center animate-fade-in">
+      {/* Footer */}
+      <motion.footer
+        className="py-10 px-4 bg-gradient-to-r from-indigo-900 to-purple-900 text-white text-center"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 1 }}
+      >
         <h2 className="text-2xl font-semibold">BorrowBox – Rent Smarter</h2>
         <p className="text-xs opacity-80 mt-1">Seamless gadget rentals at your fingertips.</p>
-        
-        {/* Social Icons */}
-        <div className="flex justify-center space-x-4 mt-4">
-          <a href="#" className="text-white hover:text-orange-400 transition transform hover:scale-110">
-            <FaFacebookF size={16} />
-          </a>
-          <a href="#" className="text-white hover:text-orange-400 transition transform hover:scale-110">
-            <FaTwitter size={16} />
-          </a>
-          <a href="#" className="text-white hover:text-orange-400 transition transform hover:scale-110">
-            <FaInstagram size={16} />
-          </a>
-          <a href="#" className="text-white hover:text-orange-400 transition transform hover:scale-110">
-            <FaLinkedinIn size={16} />
-          </a>
-        </div>
-
-        <p className="text-xs opacity-60 mt-4">© 2025 BorrowBox. All rights reserved.</p>
-      </footer>
-
-      {/* Floating CTA Button */}
-      <button
-        className="fixed bottom-6 right-6 bg-purple-600 text-white p-3 rounded-full shadow-md hover:bg-purple-700 transition transform hover:scale-110 animate-bounce"
-        onClick={() => navigate("/all-gadgets")}
-      >
-        Browse Deals
-      </button>
-    </div>
+      </motion.footer>
+    </motion.div>
   );
 };
 
 export default PublicDashboard;
-
