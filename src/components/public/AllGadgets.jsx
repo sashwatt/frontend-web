@@ -24,25 +24,25 @@
 //     : products.filter((product) => product.category === selectedCategory);
 
 //   return (
-//     <div className="min-h-screen bg-gray-50">
+//     <div className="min-h-screen bg-gray-50 text-gray-800">
 //       <PublicNavbar />
 
 //       {/* Hero Section */}
-//       <section className="bg-gradient-to-r from-purple-800 to-indigo-700 text-white py-20 px-6 md:px-20 text-center">
-//         <h1 className="text-5xl font-extrabold">Discover & Rent the Best Gadgets</h1>
-//         <p className="mt-4 text-lg opacity-90 max-w-3xl mx-auto">
-//           Explore high-quality gadgets for rent at the best prices. Choose your category and start renting today.
+//       <section className="bg-gradient-to-r from-purple-800 to-indigo-700 text-white py-20 px-6 md:px-20 text-center animate-fade-in">
+//         <h1 className="text-4xl font-bold">Discover & Rent the Best Gadgets</h1>
+//         <p className="mt-2 text-sm opacity-90 max-w-md mx-auto">
+//           Explore high-quality gadgets for rent at unbeatable prices. Choose your category and start renting today!
 //         </p>
 //       </section>
 
 //       {/* Category Selection */}
 //       <section className="py-8 px-6 md:px-20 text-center">
-//         <h2 className="text-3xl font-extrabold mb-6 text-gray-800">Select a Gadgets Group</h2>
-//         <div className="flex justify-center space-x-4 flex-wrap">
+//         <h2 className="text-3xl font-semibold mb-4 text-gray-800">Choose a Gadget Category</h2>
+//         <div className="flex justify-center space-x-3 flex-wrap">
 //           {categories.map((category) => (
 //             <button
 //               key={category}
-//               className={`px-6 py-3 rounded-lg font-semibold transition transform hover:scale-105 ${
+//               className={`px-4 py-2 rounded-md text-sm font-medium transition transform hover:scale-105 ${
 //                 selectedCategory === category
 //                   ? "bg-orange-500 text-white shadow-md"
 //                   : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -56,30 +56,30 @@
 //       </section>
 
 //       {/* Products Grid */}
-//       <section className="py-12 px-6 md:px-20">
-//         <h2 className="text-4xl font-extrabold mb-8 text-gray-800 text-center">Choose Your Gadget</h2>
-//         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+//       <section className="py-10 px-6 md:px-20">
+//         <h2 className="text-3xl font-semibold mb-6 text-center"> Featured Gadgets</h2>
+//         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 //           {filteredProducts.map((product) => (
-//             <div key={product.id} className="bg-white p-6 rounded-lg shadow-lg transform transition hover:scale-105 hover:shadow-xl flex flex-col items-center text-center">
-//               <img src={product.image} alt={product.name} className="w-full h-48 object-cover rounded mb-4" />
-//               <h3 className="text-2xl font-bold">{product.name}</h3>
-//               <p className="text-purple-700 text-lg font-semibold mt-2">NPR {product.price}/day</p>
+//             <div key={product.id} className="bg-white p-4 rounded-md shadow-md text-center transform transition duration-300 hover:scale-105">
+//               <img src={product.image} alt={product.name} className="w-32 h-32 object-cover mx-auto mb-3 animate-fade-in" />
+//               <h3 className="text-lg font-semibold">{product.name}</h3>
+//               <p className="text-sm text-purple-600 font-medium">NPR {product.price}/day</p>
 
 //               {/* Features */}
-//               <div className="mt-2 text-gray-500 text-sm flex space-x-2 flex-wrap justify-center">
+//               <div className="mt-3 text-gray-500 text-xs flex space-x-2 flex-wrap justify-center">
 //                 {product.features.map((feature, index) => (
-//                   <span key={index} className="flex items-center bg-gray-200 px-2 py-1 rounded-md">
-//                     {feature === "Automatic" && <FaGamepad className="mr-1" />}
-//                     {feature === "Manual" && <FaLaptop className="mr-1" />}
-//                     {feature === "PS5" && <FaGamepad className="mr-1" />}
-//                     {feature === "Air Conditioner" && <FaTv className="mr-1" />}
+//                   <span key={index} className="flex items-center bg-gray-200 px-2 py-1 rounded-md shadow-sm">
+//                     {feature === "Automatic" && <FaGamepad className="mr-1 text-purple-600" />}
+//                     {feature === "Manual" && <FaLaptop className="mr-1 text-purple-600" />}
+//                     {feature === "VR Ready" && <FaGamepad className="mr-1 text-purple-600" />}
+//                     {feature === "4K" && <FaTv className="mr-1 text-purple-600" />}
 //                     {feature}
 //                   </span>
 //                 ))}
 //               </div>
 
 //               {/* View Details Button */}
-//               <button className="mt-4 bg-orange-500 text-white py-2 px-6 rounded-lg font-semibold text-lg hover:bg-orange-600 transition">
+//               <button className="mt-4 bg-orange-500 text-white py-2 px-6 rounded-md text-sm hover:bg-orange-600 transition transform hover:scale-105">
 //                 View Details
 //               </button>
 //             </div>
@@ -88,18 +88,18 @@
 //       </section>
 
 //       {/* Category Icons Footer */}
-//       <section className="py-10 bg-gray-100 flex justify-center space-x-8">
-//         <FaGamepad size={50} className="text-purple-700" />
-//         <FaLaptop size={50} className="text-purple-700" />
-//         <FaCamera size={50} className="text-purple-700" />
-//         <FaMobileAlt size={50} className="text-purple-700" />
-//         <FaTv size={50} className="text-purple-700" />
+//       <section className="py-8 bg-gray-100 flex justify-center space-x-6">
+//         <FaGamepad size={30} className="text-purple-700 hover:scale-110 transition transform" />
+//         <FaLaptop size={30} className="text-purple-700 hover:scale-110 transition transform" />
+//         <FaCamera size={30} className="text-purple-700 hover:scale-110 transition transform" />
+//         <FaMobileAlt size={30} className="text-purple-700 hover:scale-110 transition transform" />
+//         <FaTv size={30} className="text-purple-700 hover:scale-110 transition transform" />
 //       </section>
 
 //       {/* Footer */}
-//       <footer className="py-16 px-6 md:px-20 text-center bg-gradient-to-r from-purple-800 to-indigo-700 text-white">
-//         <h2 className="text-4xl font-extrabold mb-4">Your Trusted Gadget Rental Platform</h2>
-//         <p className="text-lg opacity-80">Experience a seamless and affordable way to rent high-end gadgets.</p>
+//       <footer className="py-10 px-6 md:px-20 text-center bg-gradient-to-r from-purple-800 to-indigo-700 text-white animate-fade-in">
+//         <h2 className="text-2xl font-semibold">Your Trusted Gadget Rental Platform</h2>
+//         <p className="text-xs opacity-80 mt-1">Experience a seamless and affordable way to rent high-end gadgets.</p>
 //       </footer>
 //     </div>
 //   );
@@ -107,8 +107,9 @@
 
 // export default AllGadgets;
 
+
+import { motion } from "framer-motion";
 import React, { useState } from "react";
-import { FaCamera, FaGamepad, FaLaptop, FaMobileAlt, FaTv } from "react-icons/fa";
 import PublicNavbar from "../common/customer/PublicNavbar";
 
 const AllGadgets = () => {
@@ -133,27 +134,43 @@ const AllGadgets = () => {
     : products.filter((product) => product.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <motion.div 
+      className="min-h-screen bg-gray-50 text-gray-800"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.5 }}
+    >
       <PublicNavbar />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-purple-800 to-indigo-700 text-white py-24 px-6 md:px-20 text-center">
-        <h1 className="text-6xl font-extrabold animate-fade-in">Discover & Rent the Best Gadgets</h1>
-        <p className="mt-4 text-xl opacity-90 max-w-3xl mx-auto">
+      <motion.section 
+        className="bg-gradient-to-r from-purple-800 to-indigo-700 text-white py-20 px-6 md:px-20 text-center"
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      >
+        <h1 className="text-4xl font-bold">Discover & Rent the Best Gadgets</h1>
+        <p className="mt-2 text-sm opacity-90 max-w-md mx-auto">
           Explore high-quality gadgets for rent at unbeatable prices. Choose your category and start renting today!
         </p>
-      </section>
+      </motion.section>
 
       {/* Category Selection */}
-      <section className="py-10 px-6 md:px-20 text-center">
-        <h2 className="text-4xl font-extrabold mb-6 text-gray-800"> Choose a Gadget Category</h2>
-        <div className="flex justify-center space-x-4 flex-wrap">
+      <motion.section 
+        className="py-8 px-6 md:px-20 text-center"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+      >
+        <h2 className="text-3xl font-semibold mb-4 text-gray-800">Choose a Gadget Category</h2>
+        <div className="flex justify-center space-x-3 flex-wrap">
           {categories.map((category) => (
             <button
               key={category}
-              className={`px-6 py-3 rounded-lg font-semibold transition transform hover:scale-105 ${
+              className={`px-4 py-2 rounded-md text-sm font-medium transition transform hover:scale-105 ${
                 selectedCategory === category
-                  ? "bg-orange-500 text-white shadow-lg"
+                  ? "bg-orange-500 text-white shadow-md"
                   : "bg-gray-200 text-gray-700 hover:bg-gray-300"
               }`}
               onClick={() => setSelectedCategory(category)}
@@ -162,55 +179,49 @@ const AllGadgets = () => {
             </button>
           ))}
         </div>
-      </section>
+      </motion.section>
 
       {/* Products Grid */}
-      <section className="py-16 px-6 md:px-20">
-        <h2 className="text-5xl font-extrabold mb-8 text-gray-800 text-center"> Featured Gadgets</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+      <motion.section 
+        className="py-10 px-6 md:px-20"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.6 }}
+      >
+        <h2 className="text-3xl font-semibold mb-6 text-center">🔥 Featured Gadgets</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProducts.map((product) => (
-            <div key={product.id} className="bg-white p-6 rounded-lg shadow-lg transform transition hover:scale-110 hover:shadow-2xl flex flex-col items-center text-center">
-              <img src={product.image} alt={product.name} className="w-full h-48 object-cover rounded mb-4" />
-              <h3 className="text-3xl font-bold">{product.name}</h3>
-              <p className="text-purple-700 text-lg font-semibold mt-2">NPR {product.price}/day</p>
-
-              {/* Features */}
-              <div className="mt-3 text-gray-500 text-sm flex space-x-2 flex-wrap justify-center">
-                {product.features.map((feature, index) => (
-                  <span key={index} className="flex items-center bg-gray-200 px-3 py-1 rounded-md shadow-sm">
-                    {feature === "Automatic" && <FaGamepad className="mr-1 text-purple-600" />}
-                    {feature === "Manual" && <FaLaptop className="mr-1 text-purple-600" />}
-                    {feature === "VR Ready" && <FaGamepad className="mr-1 text-purple-600" />}
-                    {feature === "4K" && <FaTv className="mr-1 text-purple-600" />}
-                    {feature}
-                  </span>
-                ))}
-              </div>
+            <motion.div 
+              key={product.id} 
+              className="bg-white p-4 rounded-md shadow-md text-center transform transition duration-300 hover:scale-105"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
+              <img src={product.image} alt={product.name} className="w-32 h-32 object-cover mx-auto mb-3" />
+              <h3 className="text-lg font-semibold">{product.name}</h3>
+              <p className="text-sm text-purple-600 font-medium">NPR {product.price}/day</p>
 
               {/* View Details Button */}
-              <button className="mt-6 bg-orange-500 text-white py-3 px-8 rounded-lg font-semibold text-lg hover:bg-orange-600 transition transform hover:scale-105">
+              <button className="mt-4 bg-orange-500 text-white py-2 px-6 rounded-md text-sm hover:bg-orange-600 transition transform hover:scale-105">
                 View Details
               </button>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </section>
-
-      {/* Category Icons Footer */}
-      <section className="py-10 bg-gray-100 flex justify-center space-x-8">
-        <FaGamepad size={50} className="text-purple-700 hover:scale-110 transition transform" />
-        <FaLaptop size={50} className="text-purple-700 hover:scale-110 transition transform" />
-        <FaCamera size={50} className="text-purple-700 hover:scale-110 transition transform" />
-        <FaMobileAlt size={50} className="text-purple-700 hover:scale-110 transition transform" />
-        <FaTv size={50} className="text-purple-700 hover:scale-110 transition transform" />
-      </section>
+      </motion.section>
 
       {/* Footer */}
-      <footer className="py-16 px-6 md:px-20 text-center bg-gradient-to-r from-purple-800 to-indigo-700 text-white">
-        <h2 className="text-4xl font-extrabold mb-4">Your Trusted Gadget Rental Platform</h2>
-        <p className="text-lg opacity-80">Experience a seamless and affordable way to rent high-end gadgets.</p>
-      </footer>
-    </div>
+      <motion.footer 
+        className="py-10 px-6 md:px-20 text-center bg-gradient-to-r from-purple-800 to-indigo-700 text-white"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 1 }}
+      >
+        <h2 className="text-2xl font-semibold">Your Trusted Gadget Rental Platform</h2>
+        <p className="text-xs opacity-80 mt-1">Experience a seamless and affordable way to rent high-end gadgets.</p>
+      </motion.footer>
+    </motion.div>
   );
 };
 
