@@ -44,7 +44,7 @@ const PublicNavbar = () => {
     },
     {
       id: 2,
-      name: 'Sony Camer',
+      name: 'Sony Camera',
       price: 'Rs 5000/day',
       imageUrl: 'images/camera.png', // Example image URL
     },
