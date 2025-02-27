@@ -1,83 +1,125 @@
+import { motion } from "framer-motion";
 import React from "react";
 import { FaEnvelope, FaMapMarkerAlt, FaPhone } from "react-icons/fa";
 import PublicNavbar from "../common/customer/PublicNavbar";
 
 const Contact = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <motion.div 
+      className="min-h-screen bg-gray-50 text-gray-800"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.5 }}
+    >
       <PublicNavbar />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-purple-800 to-indigo-700 text-white py-20 text-center px-6 md:px-20">
-        <h2 className="text-5xl font-extrabold">Contact BorrowBox</h2>
-        <p className="mt-4 text-lg opacity-90 max-w-3xl mx-auto">
+      <motion.section 
+        className="bg-gradient-to-r from-purple-700 to-indigo-700 text-white py-14 text-center px-6 md:px-20"
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      >
+        <h2 className="text-3xl font-bold">Contact BorrowBox</h2>
+        <p className="mt-2 text-sm opacity-90 max-w-lg mx-auto">
           Need help? Have questions? Reach out to us. Our team is ready to assist you!
         </p>
-      </section>
+      </motion.section>
 
       {/* Contact Information */}
-      <section className="py-16 px-6 md:px-20 text-center">
-        <h3 className="text-3xl font-extrabold mb-8 text-gray-800">How to Reach Us</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <div className="bg-white p-6 rounded-lg shadow-lg transform transition hover:scale-105">
-            <FaEnvelope size={50} className="text-purple-700 mx-auto mb-4" />
-            <h4 className="text-xl font-semibold">Email Us</h4>
-            <p className="text-gray-500 mt-2">support@borrowbox.com</p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-lg transform transition hover:scale-105">
-            <FaPhone size={50} className="text-purple-700 mx-auto mb-4" />
-            <h4 className="text-xl font-semibold">Call Us</h4>
-            <p className="text-gray-500 mt-2">+123 456 7890</p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-lg transform transition hover:scale-105">
-            <FaMapMarkerAlt size={50} className="text-purple-700 mx-auto mb-4" />
-            <h4 className="text-xl font-semibold">Visit Us</h4>
-            <p className="text-gray-500 mt-2">123 BorrowBox Street, TechCity</p>
-          </div>
+      <motion.section 
+        className="py-10 px-6 md:px-20 text-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+      >
+        <h3 className="text-2xl font-semibold mb-6 text-gray-800">How to Reach Us</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            { icon: <FaEnvelope size={30} className="text-purple-600 mx-auto mb-2" />, title: "Email Us", desc: "support@borrowbox.com" },
+            { icon: <FaPhone size={30} className="text-purple-600 mx-auto mb-2" />, title: "Call Us", desc: "+123 456 7890" },
+            { icon: <FaMapMarkerAlt size={30} className="text-purple-600 mx-auto mb-2" />, title: "Visit Us", desc: "123 BorrowBox Street, TechCity" },
+          ].map((info, index) => (
+            <motion.div 
+              key={index}
+              className="bg-white p-4 rounded-md shadow-md transform transition duration-300 hover:scale-105"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 + index * 0.2 }}
+            >
+              {info.icon}
+              <h4 className="text-lg font-medium">{info.title}</h4>
+              <p className="text-xs text-gray-500 mt-1">{info.desc}</p>
+            </motion.div>
+          ))}
         </div>
-      </section>
+      </motion.section>
 
       {/* Contact Form */}
-      <section className="py-16 px-6 md:px-20 text-center">
-        <h3 className="text-3xl font-extrabold mb-8 text-gray-800">Send Us a Message</h3>
-        <form className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg">
+      <motion.section 
+        className="py-10 px-6 md:px-20 text-center"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.6 }}
+      >
+        <h3 className="text-2xl font-semibold mb-6 text-gray-800">Send Us a Message</h3>
+        <motion.form 
+          className="max-w-md mx-auto bg-white p-5 rounded-md shadow-md"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+        >
           <input
             type="text"
             placeholder="Your Name"
-            className="w-full p-3 mb-4 border rounded-md focus:ring focus:ring-purple-400"
+            className="w-full p-2 mb-3 border rounded-md text-sm focus:ring focus:ring-purple-400"
           />
           <input
             type="email"
             placeholder="Your Email"
-            className="w-full p-3 mb-4 border rounded-md focus:ring focus:ring-purple-400"
+            className="w-full p-2 mb-3 border rounded-md text-sm focus:ring focus:ring-purple-400"
           />
           <textarea
             rows="4"
             placeholder="Your Message"
-            className="w-full p-3 mb-4 border rounded-md focus:ring focus:ring-purple-400"
+            className="w-full p-2 mb-3 border rounded-md text-sm focus:ring focus:ring-purple-400"
           />
-          <button className="bg-orange-500 text-white py-3 px-6 rounded-lg font-semibold hover:bg-orange-600 transition">
+          <motion.button 
+            className="bg-orange-500 text-white py-2 px-5 rounded-md font-medium text-sm hover:bg-orange-600 transition"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
             Send Message
-          </button>
-        </form>
-      </section>
+          </motion.button>
+        </motion.form>
+      </motion.section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-purple-800 text-white text-center px-6 md:px-20">
-        <h3 className="text-3xl font-extrabold">Let's Connect!</h3>
-        <p className="mt-4 text-lg opacity-90 max-w-2xl mx-auto">
+      <motion.section 
+        className="py-10 bg-purple-700 text-white text-center px-6 md:px-20"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.7 }}
+      >
+        <h3 className="text-2xl font-semibold">Let's Connect!</h3>
+        <p className="mt-2 text-sm opacity-90 max-w-md mx-auto">
           Whether you have questions, feedback, or partnership opportunities, we're here for you.
         </p>
-        <button className="mt-6 bg-orange-500 py-3 px-6 rounded-lg font-semibold text-lg hover:bg-orange-600 transition">
+        <motion.button 
+          className="mt-4 bg-orange-500 py-2 px-5 rounded-md font-medium text-sm hover:bg-orange-600 transition"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+        >
           Get in Touch
-        </button>
-      </section>
+        </motion.button>
+      </motion.section>
 
       {/* Footer */}
-      <section className="py-10 bg-gray-100 text-center">
-        <p className="text-gray-600">© 2025 BorrowBox. All rights reserved.</p>
+      <section className="py-6 bg-gray-100 text-center">
+        <p className="text-xs text-gray-600">© 2025 BorrowBox. All rights reserved.</p>
       </section>
-    </div>
+    </motion.div>
   );
 };
 
