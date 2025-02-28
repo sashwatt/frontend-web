@@ -39,7 +39,7 @@ test(' "Password" label should be visible', async ({ page }) => {
 });
 
 // 🔎 5️⃣ Check "Login" Button Label
-test(' "Login" button should be visible', async ({ page }) => {
+test('🔎 "Login" button should be visible', async ({ page }) => {
   await page.goto('http://localhost:5173/login');
 
   await expect(page.locator('button:has-text("Login")')).toBeVisible();
