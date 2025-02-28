@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { FiShoppingCart, FiUser } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const PublicNavbar = () => {
   const [cartItems, setCartItems] = useState([]);
   const [cartOpen, setCartOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+  const navigate = useNavigate(); // ✅ Use navigate for redirection
 
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -32,12 +33,21 @@ const PublicNavbar = () => {
     setCartOpen(false); // Close cart dropdown if open
   };
 
+  const handleLogout = () => {
+    navigate("/login"); // ✅ Redirects to login page
+  };
+
   return (
     <nav className="bg-white shadow-md sticky top-0 z-10">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <Link to="/" className="text-2xl font-bold text-gray-800 hover:text-blue-600 transition">
+        
+        {/* BorrowBox Redirects to Public Dashboard */}
+        <div 
+          className="text-2xl font-bold text-gray-800 hover:text-blue-600 cursor-pointer transition"
+          onClick={() => navigate("/dashboard")} // ✅ Redirect to Public Dashboard
+        >
           BorrowBox
-        </Link>
+        </div>
 
         <div className="flex justify-center space-x-6">
           <Link to="/dashboard" className="text-gray-700 hover:text-blue-600">Home</Link>
@@ -48,6 +58,7 @@ const PublicNavbar = () => {
 
         {/* Icons Section */}
         <div className="flex items-center space-x-6">
+          
           {/* Cart Button */}
           <div className="relative" onClick={toggleCartDropdown}>
             <FiShoppingCart size={24} className="text-gray-700 hover:text-blue-600 cursor-pointer" />
@@ -94,7 +105,10 @@ const PublicNavbar = () => {
                 <Link to="/profile" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">
                   Profile
                 </Link>
-                <button className="w-full text-left px-4 py-2 text-red-500 hover:bg-gray-100">
+                <button 
+                  className="w-full text-left px-4 py-2 text-red-500 hover:bg-gray-100"
+                  onClick={handleLogout} // ✅ Redirects to Login
+                >
                   Logout
                 </button>
               </div>

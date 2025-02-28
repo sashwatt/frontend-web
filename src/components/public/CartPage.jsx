@@ -12,19 +12,17 @@ const CartPage = () => {
   const removeFromCart = (id) => {
     const updatedCart = cartItems.filter((item) => item.id !== id);
     setCartItems(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    localStorage.setItem("cart", JSON.stringify(updatedCart)); // Update storage
+  };
+
+  const handleCashOnDelivery = (id) => {
+    alert("Order placed with Cash on Delivery!");
+    removeFromCart(id); // ✅ Remove only the selected item
   };
 
   const handlePayNow = () => {
     alert("Redirecting to payment gateway...");
     // You can replace this alert with actual payment logic (e.g., Stripe, PayPal, etc.)
-  };
-
-  const handleCashOnDelivery = () => {
-    alert("Your order has been placed with Cash on Delivery!");
-    // You can also add logic to clear the cart after order confirmation
-    setCartItems([]);
-    localStorage.removeItem("cart");
   };
 
   return (
@@ -59,7 +57,7 @@ const CartPage = () => {
                 </button>
                 <button 
                   className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
-                  onClick={handleCashOnDelivery}
+                  onClick={() => handleCashOnDelivery(item.id)} // ✅ Only remove selected item
                 >
                   Cash on Delivery
                 </button>
