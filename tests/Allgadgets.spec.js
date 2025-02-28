@@ -15,8 +15,13 @@ test(' All Gadgets page should display the "Featured Gadgets" section', async ({
   await expect(page.locator('text=🔥 Featured Gadgets')).toBeVisible();
 });
 
-
 test(' All Gadgets page should have a footer with platform information', async ({ page }) => {
   await page.goto('http://localhost:5173/all-gadgets');
   await expect(page.locator('text=Your Trusted Gadget Rental Platform')).toBeVisible();
+});
+
+// New Test: Ensure the hero section description text is visible
+test(' All Gadgets page should display the hero section description', async ({ page }) => {
+  await page.goto('http://localhost:5173/all-gadgets');
+  await expect(page.locator('text=Explore high-quality gadgets for rent at unbeatable prices')).toBeVisible();
 });
