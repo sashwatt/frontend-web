@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import React, { useState } from "react";
-import { FaBolt, FaCamera, FaGamepad, FaLaptop, FaMicrochip, FaTv } from "react-icons/fa"; // Feature icons
 import PublicNavbar from "../common/customer/PublicNavbar";
 
 const AllGadgets = () => {
   const [selectedCategory, setSelectedCategory] = useState("All Gadgets");
+  const [notification, setNotification] = useState(null);
 
   const categories = ["All Gadgets", "Playstation", "Laptops", "Phones", "Cameras", "TVs"];
 
@@ -18,16 +18,16 @@ const AllGadgets = () => {
     { id: 7, name: "ASUS Laptop", category: "Laptops", price: 5000, image: "/images/laptop.png", features: ["Touchscreen", "Intel i7", "16GB RAM"] },
     { id: 8, name: "ASUS Pro", category: "Laptops", price: 6000, image: "/images/laptop.png", features: ["4K Display", "RTX 3060"] },
     { id: 9, name: "ASUS Ultra", category: "Laptops", price: 7000, image: "/images/laptop.png", features: ["OLED Screen", "32GB RAM", "Thunderbolt"] },
-    // { id: 10, name: "Samsung TV", category: "TVs", price: 1500, image: "/images/tv.png", features: ["4k Screen", "HDMI", "Wifi"] },
   ];
 
-  const featureIcons = {
-    "Automatic": <FaGamepad className="text-purple-600 mr-1" />,
-    "Manual": <FaLaptop className="text-purple-600 mr-1" />,
-    "4K": <FaTv className="text-purple-600 mr-1" />,
-    "8K": <FaCamera className="text-purple-600 mr-1" />,
-    "Intel i7": <FaMicrochip className="text-purple-600 mr-1" />,
-    "Fast SSD": <FaBolt className="text-purple-600 mr-1" />,
+  const addToCart = (product) => {
+    const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+    const updatedCart = [...existingCart, product];
+
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+    setNotification(`${product.name} added to cart!`);
+    setTimeout(() => setNotification(null), 3000);
   };
 
   const filteredProducts = selectedCategory === "All Gadgets"
@@ -39,10 +39,22 @@ const AllGadgets = () => {
       className="min-h-screen bg-gray-50 text-gray-800"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5 }}
     >
       <PublicNavbar />
+
+      {/* Notification */}
+      {notification && (
+        <motion.div
+          className="fixed top-5 right-5 bg-green-500 text-white px-4 py-2 rounded-lg shadow-md z-50 text-sm"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.3 }}
+        >
+          {notification}
+        </motion.div>
+      )}
 
       {/* Hero Section */}
       <motion.section 
@@ -58,12 +70,7 @@ const AllGadgets = () => {
       </motion.section>
 
       {/* Category Selection */}
-      <motion.section 
-        className="py-8 px-6 md:px-20 text-center"
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
-      >
+      <motion.section className="py-8 px-6 md:px-20 text-center">
         <h2 className="text-2xl font-semibold mb-4 text-gray-800">Choose a Gadget Category</h2>
         <div className="flex justify-center space-x-3 flex-wrap">
           {categories.map((category) => (
@@ -83,12 +90,7 @@ const AllGadgets = () => {
       </motion.section>
 
       {/* Products Grid */}
-      <motion.section 
-        className="py-10 px-6 md:px-20"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-      >
+      <motion.section className="py-10 px-6 md:px-20">
         <h2 className="text-2xl font-semibold mb-6 text-center">🔥 Featured Gadgets</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProducts.map((product) => (
@@ -108,21 +110,12 @@ const AllGadgets = () => {
                 NPR {product.price} <span className="text-xs text-gray-500">per day</span>
               </p>
 
-              {/* Features Section */}
-              <div className="mt-3 flex flex-wrap items-center justify-center gap-2 text-xs text-gray-600">
-                {product.features.map((feature, i) => (
-                  <span key={i} className="flex items-center bg-gray-200 px-2 py-1 rounded-full shadow-sm">
-                    {featureIcons[feature] || null}
-                    {feature}
-                  </span>
-                ))}
-              </div>
-
               {/* View Details Button */}
               <motion.button 
                 className="mt-4 bg-orange-500 text-white py-2 px-5 rounded-full text-sm font-medium hover:bg-orange-600 transition shadow-md"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => addToCart(product)}
               >
                 Add to Cart
               </motion.button>
@@ -130,17 +123,6 @@ const AllGadgets = () => {
           ))}
         </div>
       </motion.section>
-
-      {/* Footer */}
-      <motion.footer 
-        className="py-10 px-6 md:px-20 text-center bg-gradient-to-r from-purple-800 to-indigo-700 text-white"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1 }}
-      >
-        <h2 className="text-2xl font-semibold">Your Trusted Gadget Rental Platform</h2>
-        <p className="text-xs opacity-80 mt-1">Experience a seamless and affordable way to rent high-end gadgets.</p>
-      </motion.footer>
     </motion.div>
   );
 };

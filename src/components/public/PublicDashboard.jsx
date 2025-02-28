@@ -1,6 +1,6 @@
+
 import { motion } from "framer-motion";
 import React, { useState } from "react";
-import { FaClock, FaPiggyBank, FaShieldAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Typewriter from "typewriter-effect";
 import PublicNavbar from "../common/customer/PublicNavbar";
@@ -20,6 +20,11 @@ const PublicDashboard = () => {
   const [notification, setNotification] = useState(null);
 
   const handleAddToCart = (product) => {
+    const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+    const updatedCart = [...existingCart, product];
+
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+
     setNotification(`${product.name} added to cart!`);
     setTimeout(() => {
       setNotification(null);
@@ -31,12 +36,10 @@ const PublicDashboard = () => {
       className="min-h-screen bg-gray-50 text-gray-800"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5 }}
     >
       <PublicNavbar />
 
-      {/* Notification */}
       {notification && (
         <motion.div
           className="fixed top-5 right-5 bg-green-500 text-white px-4 py-2 rounded-lg shadow-md z-50 text-sm"
@@ -69,7 +72,7 @@ const PublicDashboard = () => {
           Get access to the latest gadgets at an affordable price with BorrowBox.
         </p>
         <motion.button
-          className="mt-4 bg-orange-500 text-white py-2 px-6 rounded-md text-sm hover:bg-orange-600 transition transform hover:scale-105"
+          className="mt-4 bg-orange-500 text-white py-2 px-6 rounded-md text-sm hover:bg-orange-600 transition"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => navigate("/all-gadgets")}
@@ -78,45 +81,14 @@ const PublicDashboard = () => {
         </motion.button>
       </motion.section>
 
-      {/* Features Section */}
-      <motion.section 
-        className="py-12 px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
-      >
-        {[
-          { icon: <FaClock size={40} className="mx-auto text-purple-600" />, title: "24/7 Availability", desc: "Rent anytime, anywhere." },
-          { icon: <FaShieldAlt size={40} className="mx-auto text-purple-600" />, title: "100% Secure", desc: "Your transactions are protected." },
-          { icon: <FaPiggyBank size={40} className="mx-auto text-purple-600" />, title: "Affordable Pricing", desc: "Rent premium gadgets affordably." },
-        ].map((feature, index) => (
-          <motion.div 
-            key={index}
-            className="p-4 bg-white shadow-md rounded-md transform transition duration-300 hover:scale-105"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 + index * 0.2 }}
-          >
-            {feature.icon}
-            <h3 className="mt-2 text-lg font-semibold">{feature.title}</h3>
-            <p className="text-xs text-gray-500">{feature.desc}</p>
-          </motion.div>
-        ))}
-      </motion.section>
-
       {/* Product Grid Section */}
-      <motion.section
-        className="py-12 px-4"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-      >
+      <motion.section className="py-12 px-4">
         <h2 className="text-3xl font-semibold mb-6 text-center">🔥 Hot Deals from BorrowBox</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {products.map((product, index) => (
             <motion.div
               key={product.id}
-              className="bg-white p-4 rounded-md shadow-md text-center transform transition duration-300 hover:scale-105"
+              className="bg-white p-4 rounded-md shadow-md text-center hover:scale-105 transition duration-300"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
@@ -136,17 +108,6 @@ const PublicDashboard = () => {
           ))}
         </div>
       </motion.section>
-
-      {/* Footer */}
-      <motion.footer
-        className="py-10 px-4 bg-gradient-to-r from-indigo-900 to-purple-900 text-white text-center"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1 }}
-      >
-        <h2 className="text-2xl font-semibold">BorrowBox – Rent Smarter</h2>
-        <p className="text-xs opacity-80 mt-1">Seamless gadget rentals at your fingertips.</p>
-      </motion.footer>
     </motion.div>
   );
 };
