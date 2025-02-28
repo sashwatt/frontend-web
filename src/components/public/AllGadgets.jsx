@@ -1,6 +1,6 @@
-
 import { motion } from "framer-motion";
 import React, { useState } from "react";
+import { FaBolt, FaCamera, FaGamepad, FaLaptop, FaMicrochip, FaTv } from "react-icons/fa"; // Feature icons
 import PublicNavbar from "../common/customer/PublicNavbar";
 
 const AllGadgets = () => {
@@ -19,6 +19,15 @@ const AllGadgets = () => {
     { id: 8, name: "ASUS Pro", category: "Laptops", price: 6000, image: "/images/laptop.png", features: ["4K Display", "RTX 3060"] },
     { id: 9, name: "ASUS Ultra", category: "Laptops", price: 7000, image: "/images/laptop.png", features: ["OLED Screen", "32GB RAM", "Thunderbolt"] },
   ];
+
+  const featureIcons = {
+    "Automatic": <FaGamepad className="text-purple-600 mr-1" />,
+    "Manual": <FaLaptop className="text-purple-600 mr-1" />,
+    "4K": <FaTv className="text-purple-600 mr-1" />,
+    "8K": <FaCamera className="text-purple-600 mr-1" />,
+    "Intel i7": <FaMicrochip className="text-purple-600 mr-1" />,
+    "Fast SSD": <FaBolt className="text-purple-600 mr-1" />,
+  };
 
   const filteredProducts = selectedCategory === "All Gadgets"
     ? products
@@ -54,7 +63,7 @@ const AllGadgets = () => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6, delay: 0.4 }}
       >
-        <h2 className="text-3xl font-semibold mb-4 text-gray-800">Choose a Gadget Category</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-gray-800">Choose a Gadget Category</h2>
         <div className="flex justify-center space-x-3 flex-wrap">
           {categories.map((category) => (
             <button
@@ -79,24 +88,43 @@ const AllGadgets = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.6 }}
       >
-        <h2 className="text-3xl font-semibold mb-6 text-center"> Featured Gadgets</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <h2 className="text-2xl font-semibold mb-6 text-center">🔥 Featured Gadgets</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProducts.map((product) => (
             <motion.div 
               key={product.id} 
-              className="bg-white p-4 rounded-md shadow-md text-center transform transition duration-300 hover:scale-105"
+              className="bg-white p-5 rounded-lg shadow-md text-center transform transition duration-300 hover:scale-105 hover:shadow-lg"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
             >
-              <img src={product.image} alt={product.name} className="w-32 h-32 object-cover mx-auto mb-3" />
+              <img src={product.image} alt={product.name} className="w-28 h-28 object-cover mx-auto mb-3" />
               <h3 className="text-lg font-semibold">{product.name}</h3>
-              <p className="text-sm text-purple-600 font-medium">NPR {product.price}/day</p>
+              <p className="text-sm text-gray-500">{product.category}</p>
+              
+              {/* Price Styling */}
+              <p className="text-lg font-bold text-purple-600 mt-2">
+                NPR {product.price} <span className="text-xs text-gray-500">per day</span>
+              </p>
+
+              {/* Features Section */}
+              <div className="mt-3 flex flex-wrap items-center justify-center gap-2 text-xs text-gray-600">
+                {product.features.map((feature, i) => (
+                  <span key={i} className="flex items-center bg-gray-200 px-2 py-1 rounded-full shadow-sm">
+                    {featureIcons[feature] || null}
+                    {feature}
+                  </span>
+                ))}
+              </div>
 
               {/* View Details Button */}
-              <button className="mt-4 bg-orange-500 text-white py-2 px-6 rounded-md text-sm hover:bg-orange-600 transition transform hover:scale-105">
-                View Details
-              </button>
+              <motion.button 
+                className="mt-4 bg-orange-500 text-white py-2 px-5 rounded-full text-sm font-medium hover:bg-orange-600 transition shadow-md"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Add to Cart
+              </motion.button>
             </motion.div>
           ))}
         </div>
