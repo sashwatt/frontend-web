@@ -22,7 +22,7 @@ const CartPage = () => {
   };
 
   const handleCashOnDelivery = (id) => {
-    setNotification("Order placed with Cash on Delivery!");
+    alert("Order placed with Cash on Delivery!");
     removeFromCart(id);
   };
 
