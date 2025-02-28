@@ -123,6 +123,18 @@ const AllGadgets = () => {
           ))}
         </div>
       </motion.section>
+
+      {/* Footer (Added Back) */}
+      <motion.footer 
+        className="py-10 text-center bg-gradient-to-r from-purple-700 to-indigo-700 text-white"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <h2 className="text-xl font-semibold">Your Trusted Gadget Rental Platform</h2>
+        <p className="text-xs opacity-80">Experience a seamless and affordable way to rent high-end gadgets.</p>
+      </motion.footer>
+
     </motion.div>
   );
 };
