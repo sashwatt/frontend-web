@@ -134,7 +134,9 @@ const AllGadgets = () => {
         <h2 className="text-xl font-semibold">Your Trusted Gadget Rental Platform</h2>
         <p className="text-xs opacity-80">Experience a seamless and affordable way to rent high-end gadgets.</p>
       </motion.footer>
-
+      <section className="py-6 bg-gray-100 text-center">
+        <p className="text-xs text-gray-600">© 2025 BorrowBox. All rights reserved.</p>
+      </section>      
     </motion.div>
   );
 };

@@ -129,6 +129,10 @@ const CartPage = () => {
         <h2 className="text-xl font-semibold">Secure & Fast Gadget Rentals</h2>
         <p className="text-xs opacity-80">Enjoy seamless checkout and secure transactions with BorrowBox.</p>
       </motion.footer>
+
+      <section className="py-6 bg-gray-100 text-center">
+        <p className="text-xs text-gray-600">© 2025 BorrowBox. All rights reserved.</p>
+      </section>
     </motion.div>
   );
 };

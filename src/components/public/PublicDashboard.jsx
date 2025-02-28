@@ -236,6 +236,9 @@ const PublicDashboard = () => {
         <p className="text-xs opacity-80">Seamless gadget rentals at your fingertips.</p>
       </motion.footer>
       
+      <section className="py-6 bg-gray-100 text-center">
+        <p className="text-xs text-gray-600">© 2025 BorrowBox. All rights reserved.</p>
+      </section>
     </motion.div>
   );
 };
