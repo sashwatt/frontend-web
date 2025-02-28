@@ -117,7 +117,7 @@ const AllGadgets = () => {
                 whileTap={{ scale: 0.95 }}
                 onClick={() => addToCart(product)}
               >
-                Add to Cart
+                Rent Now
               </motion.button>
             </motion.div>
           ))}
