@@ -24,3 +24,9 @@ test(' Register page should have Terms and Conditions checkbox', async ({ page }
   await page.goto('http://localhost:5173/register');
   await expect(page.locator('text=Terms and Conditions')).toBeVisible();
 });
+
+// New Test: Ensure the login prompt text is visible
+test(' Register page should display login prompt', async ({ page }) => {
+  await page.goto('http://localhost:5173/register');
+  await expect(page.locator('text=Already have an account? Login here')).toBeVisible();
+});
