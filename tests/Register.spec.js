@@ -1,15 +1,26 @@
-import { test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
-test('User should be able to register successfully', async ({ page }) => {
+test('Register page should display title', async ({ page }) => {
   await page.goto('http://localhost:5173/register');
+  await expect(page.locator('text=Join BorrowBox')).toBeVisible();
+});
 
-  await page.fill('input[name="fName"]', 'John Doe');
-  await page.fill('input[name="email"]', 'johndoe@example.com');
-  await page.fill('input[name="password"]', 'StrongPass123');
+test(' Register page should have a full name input', async ({ page }) => {
+  await page.goto('http://localhost:5173/register');
+  await expect(page.locator('input[placeholder="Full Name"]')).toBeVisible();
+});
 
-  await page.check('input[name="termsAccepted"]');
+test(' Register page should have an email input', async ({ page }) => {
+  await page.goto('http://localhost:5173/register');
+  await expect(page.locator('input[placeholder="Email Address"]')).toBeVisible();
+});
 
-  await page.click('button:has-text("Sign Up")');
+test(' Register page should have a password input', async ({ page }) => {
+  await page.goto('http://localhost:5173/register');
+  await expect(page.locator('input[placeholder="Password"]')).toBeVisible();
+});
 
-  
+test(' Register page should have Terms and Conditions checkbox', async ({ page }) => {
+  await page.goto('http://localhost:5173/register');
+  await expect(page.locator('text=Terms and Conditions')).toBeVisible();
 });
