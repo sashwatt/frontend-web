@@ -18,6 +18,7 @@ const AllGadgets = () => {
     { id: 7, name: "ASUS Laptop", category: "Laptops", price: 5000, image: "/images/laptop.png", features: ["Touchscreen", "Intel i7", "16GB RAM"] },
     { id: 8, name: "ASUS Pro", category: "Laptops", price: 6000, image: "/images/laptop.png", features: ["4K Display", "RTX 3060"] },
     { id: 9, name: "ASUS Ultra", category: "Laptops", price: 7000, image: "/images/laptop.png", features: ["OLED Screen", "32GB RAM", "Thunderbolt"] },
+    { id: 10, name: "Samsung TV", category: "TVs", price: 3000, image: "/images/tv.png", features: ["4k Screen", "HDMI", "Wifi"] },
   ];
 
   const addToCart = (product) => {
