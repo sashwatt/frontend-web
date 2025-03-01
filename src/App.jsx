@@ -64,7 +64,6 @@ function App() {
     },
   ];
 
-  // Dynamically choose routes
   const routes = isAdmin ? privateRoutes : publicRoutes;
   const router = createBrowserRouter([...publicRoutes, ...privateRoutes]);
 
