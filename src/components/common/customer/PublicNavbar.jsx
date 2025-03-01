@@ -34,7 +34,7 @@ const PublicNavbar = () => {
   };
 
   const handleLogout = () => {
-    navigate("/login"); // ✅ Redirects to login page
+    navigate("/login"); 
   };
 
   return (
@@ -107,7 +107,7 @@ const PublicNavbar = () => {
                 </Link>
                 <button 
                   className="w-full text-left px-4 py-2 text-red-500 hover:bg-gray-100"
-                  onClick={handleLogout} // ✅ Redirects to Login
+                  onClick={handleLogout} 
                 >
                   Logout
                 </button>
