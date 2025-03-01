@@ -6,7 +6,7 @@ const PublicNavbar = () => {
   const [cartItems, setCartItems] = useState([]);
   const [cartOpen, setCartOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
-  const navigate = useNavigate(); // ✅ Use navigate for redirection
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -121,3 +121,4 @@ const PublicNavbar = () => {
 };
 
 export default PublicNavbar;
+
