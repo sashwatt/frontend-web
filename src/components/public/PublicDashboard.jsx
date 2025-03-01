@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Typewriter from "typewriter-effect";
 import PublicNavbar from "../common/customer/PublicNavbar";
 
 const PublicDashboard = () => {
@@ -57,7 +58,7 @@ const PublicDashboard = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-        {/* <h1 className="text-4xl font-bold">
+        <h1 className="text-4xl font-bold">
           <Typewriter
             options={{
               strings: ["Premium Gadget Rentals", "Rent Latest Tech Easily"],
@@ -65,7 +66,7 @@ const PublicDashboard = () => {
               loop: true,
             }}
           />
-        </h1> */}
+        </h1>
         <p className="mt-2 text-sm opacity-90 max-w-md mx-auto">
           Get access to the latest gadgets at an affordable price with BorrowBox.
         </p>
