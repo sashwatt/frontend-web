@@ -116,9 +116,9 @@ const Contact = () => {
       </motion.section>
 
       {/* Footer */}
-      <section className="py-6 bg-gray-100 text-center">
+      {/* <section className="py-6 bg-gray-100 text-center">
         <p className="text-xs text-gray-600">© 2025 BorrowBox. All rights reserved.</p>
-      </section>
+      </section> */}
     </motion.div>
   );
 };
